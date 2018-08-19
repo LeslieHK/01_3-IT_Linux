@@ -1,0 +1,14 @@
+网址：http://blog.csdn.net/nmgrd/article/details/51768809
+ifconfig
+直接调用命令出错
+已知ifconfig命令位于/usr/sbin目录，事实表明该目录本来就在环境变量中了
+echo $PATH 
+查看该目录下确实没有ifconfig命令,可以确认我们的CentOS里边是没有安装ifconfig的
+ls /usr/sbin | grep ifconfig 
+搜索ifconfig命令位于哪个包中（搜索该命令位于哪个包中也可以使用yum provides ifconfig或者yum whatprovides ifconfig，“provides”或者“whatprovides”开关用于找出某个包提供了某些功能或文件）
+yum search ifconfig 
+上一个命令可知ifconfig命令位于net-tools.x86_64包中，所以安装该包
+yum install net-tools.x86_64 
+再次运行该命令，成功，netstat，whois等命令也位于该包下，现在都可以运行成功
+ifconfig 
+

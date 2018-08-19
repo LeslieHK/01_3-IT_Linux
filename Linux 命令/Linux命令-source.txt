@@ -1,0 +1,10 @@
+source命令用法：
+
+source Filename （通常用“.”来代替）
+
+source test.sh 与 .test.sh是等效的。
+
+【补充】
+
+source命令与shell scripts的区别是，
+source在当前bash环境下执行命令，而scripts是启动一个子shell来执行命令。这样如果把设置环境变量（或alias等等）的命令写进 scripts中，就只会影响子shell,无法改变当前的BASH,所以通过文件（命令列）设置环境变量时，要用source 命令。
